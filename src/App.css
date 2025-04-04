@@ -1,0 +1,285 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  min-height: 100vh;        
+  flex-direction: column;   
+  text-align: center;
+}
+
+.main-container {
+  width: 80%;
+  max-width: 800px; 
+}
+
+/* Estilo del grid */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Estilo del titulo*/
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/*  Estilo del input */
+input.search {
+  display: block;
+  margin: 0 auto 30px auto;
+  padding: 10px 20px;
+  width: 280px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  background-color: white; /* Fondo del input */
+}
+
+input.search:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+
+/* Botones de paginación */
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pagination-controls button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #2980b9;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Libreria de colores */
+:root {
+    --clr-black: #1c1c1c;
+    --clr-gray: #ececec;
+    --clr-white: #f7f7f7;
+
+    --type-normal: #A8A878;
+    --type-fire: #F08030;
+    --type-water: #6890F0;
+    --type-grass: #78C850;
+    --type-electric: #F8D030;
+    --type-ice: #98D8D8;
+    --type-fighting: #C03028;
+    --type-poison: #A040A0;
+    --type-ground: #E0C068;
+    --type-flying: #A890F0;
+    --type-psychic: #F85888;
+    --type-bug: #A8B820;
+    --type-rock: #B8A038;
+    --type-ghost: #705898;
+    --type-dark: #705848;
+    --type-dragon: #7038F8;
+    --type-steel: #B8B8D0;
+    --type-fairy: #F0B6BC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--clr-black);
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Estilo de la tarjeta */
+.pokemon-card {
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between;
+    border-radius: 1rem;
+    background-color: var(--clr-white);
+    box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, .25);
+    padding-block: 1rem;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    overflow: hidden;
+    width: 300px; 
+    
+}
+
+/* Estilo de la imagen de la tarjeta */
+.pokemon-imagen img {
+    width: 100%;
+    max-width: 6rem;
+}
+
+
+/* Contenido Tarjeta */
+.pokemon-info {
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+/* Botón tarjeta */
+.pokemon-stats-bttn  {
+  padding: 8px 16px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block; /* Para que respete el margin */
+  margin: 10px auto;
+}
+
+.pokemon-stats-bttn:hover {
+  background-color: #2980b9;
+}
+
+
+/* Estilo del id */
+.pokemon-id {
+    background-color: var(--clr-gray);
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: .75rem;
+    font-weight: 500;
+}
+
+.pokemon-name {
+    font-size: 1.4rem;
+}
+
+
+/* Fondo oscuro para el overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Estilo del modal */
+.modal-container {
+  background: white;
+  width: 90%;
+  max-width: 600px; 
+  max-height: 80vh; 
+  overflow-y: auto; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos del título */
+.modal-container h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+/* Imagen del Pokémon */
+.modal-container img {
+  width: 150px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.modal-container img:hover {
+  transform: scale(1.1);
+}
+
+/* Estilos de los tipos de Pokémon */
+.pokemon-types {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pokemon-type {
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* Estadísticas */
+.pokemon-stats {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.pokemon-stats li {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+/* Botones */
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modal-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón de sonido */
+.sound-button {
+  background-color: #f39c12;
+  color: white;
+}
+
+.sound-button:hover {
+  background-color: #e67e22;
+}
+
+/* Botón de cerrar */
+.close-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.close-button:hover {
+  background-color: #c0392b;
+}
