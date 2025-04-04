@@ -4,7 +4,7 @@ import PokemonCard from "./components/PokemonCard"; //Se creó un componente par
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0); //Se incializa la primera página
   const [searchTerm, setSearchTerm] = useState(""); // Estado para la búsqueda
   const pokemonsPerPage = 6; //Se solicitó 6 máximo Pokémon por página, aunque se recomienda 8
   const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
@@ -16,6 +16,7 @@ function App() {
       const response = await fetch(`${BASE_URL}${id}`);
       const data = await response.json();
 
+      //Se verifica si no hay repetidos y se ordenan por id
       setPokemonData((prev) => {
         if (!prev.some((pokemon) => pokemon.id === data.id)) {
           return [...prev, data].sort((a, b) => a.id - b.id);
@@ -38,12 +39,12 @@ function App() {
     fetchAllPokemon();
   }, []);
 
-  //Filtrar Pokémon por nombre antes de paginar, con el fin de evitar repeticiones de Pokémon que luego se presentaban
+  //Filtrar Pokémon por nombre antes de paginar, facilita la busqueda
   const filteredPokemons = pokemonData.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  //Calcular los Pokémon a mostrar en la página actual, ya que al mapear luego se imprian en desorden, usando el index ayuda
+  //Calcular los Pokémon a mostrar en la página actual
   const startIndex = currentPage * pokemonsPerPage;
   const endIndex = startIndex + pokemonsPerPage;
   const currentPokemons = filteredPokemons.slice(startIndex, endIndex);
